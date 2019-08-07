@@ -1,0 +1,437 @@
+.MapShow{
+  position: absolute;
+  overflow: hidden;
+  height: calc(100%);
+  width: 100%;
+  .arcgis{
+    position:absolute;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+  }
+  .hometitle{
+    position: fixed;
+    width: 700px;
+    height: 70px;
+    top: 30px;
+    z-index: 1;
+    left: calc(50% - 350px);
+  }
+  .leftmove{
+    width: 260px;
+    height:100%;
+    position:relative;
+    transition: transform 0.3s cubic-bezier(0.9, 0, 0.3, 0.7), box-shadow 0.3s cubic-bezier(0.9, 0, 0.3, 0.7), -webkit-transform 0.3s cubic-bezier(0.9, 0, 0.3, 0.7);
+  }
+  .basedataShow{
+    width: 300px;
+    height:100%;
+    .backup{
+      width: 40px;
+      height: 80%;
+      position: fixed;
+      top: 5%;
+      background: url("../../style/imgs/backup.png") no-repeat;
+      background-size:100% 100%;
+      margin-left: 5px;
+      cursor: pointer;
+      .backupWord{
+        align-items: center;
+        margin-left: 10px;
+        position: fixed;
+        top: 29%;
+        width: 20px;
+        color: #fff;
+        font-size: 12px;
+        cursor: pointer;
+        .backupIcon{
+          margin-top: 10px;
+        }
+      }
+    }
+  }
+  .leftLayer{
+    position:fixed;
+    top: 0;
+    bottom:0;
+    display: flex;
+    overflow-y: auto;
+    overflow-x: hidden;
+    width: 280px;
+    min-height: 100%;
+    transition:transform 0.5s cubic-bezier(0.9, 0, 0.3, 0.7), box-shadow 0.5s cubic-bezier(0.9, 0, 0.3, 0.7), -webkit-transform 0.5s cubic-bezier(0.9, 0, 0.3, 0.7);
+    .leftmeun{
+      width:40px;
+      padding-right:10px; 
+      position:fixed;
+      .clickmeun{
+        padding-top:230px;
+      }
+      .filledsty{
+        width: 100%;
+        height: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: rgba(255,255,255,.6);
+        text-decoration: none;
+        color: #fff;
+        transform: skewY(45deg);
+        margin-bottom: 10px;
+        &:hover,&:active{
+          background:#11527b;
+        }
+        i{
+          transform: skewY(-45deg);
+        }
+      }
+      .filledact{
+        background:#11527b;
+      }
+    }
+    .rightshow{
+      width:220px;
+      margin-left:40px;
+      .headlogo{
+        margin-top:30px;
+        margin-bottom: 12px;
+      }
+      .switchRound{
+        width: 100%;
+        text-align:right;
+        color: #fff;
+        display: flex;
+        .currentweek{
+          position:relative;
+          width: 50%;
+          font-size:12px;
+          line-height: 1.2em;
+          padding-right:10px;
+          margin-right:10px;
+          &:after{
+            position:absolute;
+            top:5px;
+            right:0px;
+            content:'';
+            width:2px;
+            height: 20px;
+            background:rgba(0,0,0,.2);
+          };
+        }
+        .currenttime{
+
+          font-size: 20px;
+        }
+      }
+
+    }
+  }
+  .leftLayer::-webkit-scrollbar {
+      display: none;
+  }
+  .roundBtn{
+    position:relative;
+    width:214px;
+    height:214px;
+    margin: 30px auto;
+    background:rgba(0,0,0,.1);
+    border-radius: 107px;
+    &:before{
+      content: '';
+      position:absolute;
+      top: 27px;
+      left: 27px;
+      width: 160px;
+      height: 160px;
+    };
+    .roundline{
+      position:relative;
+      width:100%;
+      height: 215px;
+      background:url('../../style/imgs/circleline.png');
+      .centericon{
+        position:absolute;
+        top:79px;
+        left:79px;
+        width: 56px;
+        height: 56px;
+      }
+      .pointer{
+        position:absolute;
+        
+        width: 16px;
+        height: 20px;
+      }
+      .activepandect{
+        top:54px;
+        left:97px;
+        transform: rotate(0deg);
+      }
+      .activemonitor{
+        top: 96px;
+        left: 141px;
+        transform: rotate(90deg);
+      }
+      .activegis{
+        top: 137px;
+        left: 98px;
+        transform: rotate(180deg);
+      }
+      .activeprodect{
+        top: 96px;
+        left: 58px;
+        transform: rotate(-90deg);
+      }
+      .rounditem{
+        position:absolute;
+        cursor: pointer;
+        width:40px;
+        height: 40px;
+        line-height: 20px;
+        font-size:16px;
+        text-align: center;
+        border-radius:20px;
+        color: #fff; 
+        }
+      .pandect{
+        left:87px;
+        top: 8px;
+      }
+      .monitor{
+        left:164px;
+        top: 87px;
+      }
+      .gis{
+        left:87px;
+        top: 164px;
+      }
+      .prodect{
+        left:9px;
+        top: 87px;
+      }
+      .showitem{
+        color:#4dcef7;
+      }
+
+    }
+    
+  }
+  .trigger{
+    position:absolute;
+    right: -15px;
+    top:calc(50% - 10px);
+    width:15px;
+    height: 50px;
+    &:before{
+      position:absolute;
+      top:-15px;
+      content:'';
+      width:0;
+      height: 0;
+      border-bottom:15px solid rgba(255,255,255,.3);
+      border-right:15px solid transparent;
+    }
+    &:after{
+      position:absolute;
+      bottom:-15px;
+      content:'';
+      width:0;
+      height: 0;
+      border-top:15px solid rgba(255,255,255,.3);
+      border-right:15px solid transparent;
+    }
+    .triggercont{
+      height: 50px;
+      width: 15px;
+      line-height: 50px;
+      background: rgba(255,255,255,.3);
+    }
+    
+    
+
+
+  }
+  .micon{
+    display: inline-block;
+    position: absolute;
+    top: 6px;
+    left: 16px;
+    width: 12px;
+    height: 18px;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+  }
+  .miconred{
+    background-image:url('../../style/imgs/red.png');
+  }
+  .miconorange{
+    background-image:url('../../style/imgs/orange.png');
+  }
+  .miconyellow{
+    background-image:url('../../style/imgs/yellow.png');
+  }
+  .micongreen{
+    background-image:url('../../style/imgs/green.png');
+  }
+  .miconblue{
+    background-image:url('../../style/imgs/blue.png');
+  }
+  .miconindigo{
+    background-image:url('../../style/imgs/indigo.png');
+  }
+  .miconpurple{
+    background-image:url('../../style/imgs/purple.png');
+  }
+  .micongray{
+    background-image:url('../../style/imgs/gray.png');
+  }
+
+}
+.percentsty{
+  display: inline-block;
+  width: 70%;
+}
+.columndl{
+  margin-top: 8px;
+
+  .columndt{
+    margin:15px;
+    color:#4dcef7;
+    text-align:center;
+    position:relative;
+    padding:0 24px;
+    height: 26px;
+    line-height: 26px;
+    background:#0c3e5e;
+    &:before{
+      position:absolute;
+      top:0;
+      left:-13px;
+      content:'';
+      width:0;
+      height: 0;
+      border-width:13px 13px 13px 0;
+      border-style:solid;
+      border-color:transparent #0c3e5e transparent transparent;
+    }
+    &:after{
+      position:absolute;
+      top:0;
+      right:-13px;
+      content:'';
+      width:0;
+      height: 0;
+      border-width: 13px 0 13px 13px;
+      border-style:solid;
+      border-color:transparent transparent transparent #0c3e5e;
+    }
+    
+    .columndtright{
+      position:absolute;
+      top:6px;
+      right:0;
+      width:20px;
+      height: 13px;
+      font-size:12px;
+      color:#047fca;
+      background-image:url('../../style/imgs/columndtright.png');
+    }
+
+  }
+  .carouselcol{
+    padding:0 30px;
+    .columndd{
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
+      padding-left:10px;
+      padding-right: 10px;
+      line-height: 2.0em;
+      .warnico{
+        display: inline-block;
+        color: #fff;
+        border-radius: 3px;
+        padding: 0 3px;
+        margin-right: 5px;
+        line-height: 1.5em;
+      }
+    }
+    .bluewarn{
+      background-image:url('../../style/imgs/bluewarn.png');
+      .mintitle{
+        color:#1890ff;
+      }
+    }
+    .yellowwarn{
+      background-image:url('../../style/imgs/yellowwarn.png');
+      .mintitle{
+        color:#fadb14;
+      }
+    }
+    .orangewarn{
+      background-image:url('../../style/imgs/orangewarn.png');
+      .mintitle{
+        color:#fa8c16;
+      }
+    }
+    .redwarn{
+      background-image:url('../../style/imgs/redwarn.png');
+      .mintitle{
+        color:#f5222d;
+      }
+    }
+  }
+  .egraph{
+    min-height: 150px;
+    background:rgba(0, 0, 0, 0.5);
+  }
+  .echartbj{
+    width: 205px;
+    height: 205px;
+    background:rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+  }
+  
+
+}
+.pandectitem{
+  .columndd{
+    padding:0 5px 0 10px;
+    color: #fff;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+    .mintitle{
+      font-weight: bold;     
+    }
+  }
+}
+.ArcGISMap{
+  width: 100%;
+  height: 100%;
+  .mapDiv{
+    height: 100%;
+  }
+}
+
+
+.Itemshow{
+  .listitem{
+    background:rgba(0,0,0,.5);
+    border-radius:3px;
+    padding:0 30px;
+    cursor:pointer;
+    .ant-list-item{
+      width: 100%;
+      text-align: center;
+      color: #fff;
+      border-bottom:1px solid rgba(210,210,210,.2);
+      padding:5px 0;
+    }
+    .ant-list-item:last-child{
+      border-bottom:0;
+    }
+  }
+}
+
